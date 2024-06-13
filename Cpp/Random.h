@@ -61,4 +61,21 @@ struct Random
 		return { rand_range(rect.left, rect.left + rect.width),
 				 rand_range(rect.top, rect.top + rect.height) };
 	}
+
+	template<typename Type> // random position within a circle
+	static sf::Vector2<Type> rand_pos_in_circle(const sf::Vector2f center, const float radius)
+	{
+		const sf::Rect<Type> rect = { center.x - radius, center.y - radius, radius * 2, radius * 2 };
+		while (true)
+		{
+			const sf::Vector2f pos = rand_pos_in_rect(rect);
+
+			// calculating distance squares
+			const sf::Vector2f delta = pos - center;
+			const float dist_sq = delta.x * delta.x + delta.y * delta.y;
+
+			if (dist_sq <= radius * radius)
+				return pos;
+		}
+	}
 };
