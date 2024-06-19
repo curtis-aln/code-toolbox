@@ -40,3 +40,28 @@ Type toroidal_distance(const sf::Vector2<Type>& vector_1, const sf::Vector2<Type
 {
 	return sqrt(toroidal_distance_sq(vector_1, vector_2, bounds));
 }
+
+
+template<typename Type>
+void border(sf::Vector2<Type>& position, const sf::Rect<Type>& bounds)
+{
+	if (position.x < bounds.left)
+	{
+		position.x = bounds.width;
+	}
+
+	else if (position.x > bounds.left + bounds.width)
+	{
+		position.x = bounds.left;
+	}
+
+	if (position.y < bounds.top)
+	{
+		position.y = bounds.height;
+	}
+
+	else if (position.y > bounds.top + bounds.height)
+	{
+		position.y = bounds.top;
+	}
+}
