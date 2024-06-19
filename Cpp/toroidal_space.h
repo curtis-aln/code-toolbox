@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 template<typename Type>
 sf::Vector2<Type> toroidal_direction(const sf::Vector2<Type>& start, const sf::Vector2<Type>& end, const sf::Rect<Type>& bounds)
