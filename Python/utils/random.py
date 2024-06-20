@@ -1,5 +1,5 @@
 from pygame import Rect, Vector2
-from numpy.random import uniform
+from numpy.random import uniform, randint
 
 
 def randPosition(border : Rect) -> Vector2:
